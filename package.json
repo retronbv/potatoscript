@@ -1,0 +1,19 @@
+{
+  "name": "potato",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm link"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin": "./index.js",
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "brainfuck": "^1.0.2",
+    "node-fetch": "^3.2.6",
+    "readline-sync": "^1.4.10"
+  }
+}
