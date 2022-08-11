@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const bf = require("brain" + atob("ZnVjaw==")); //censor name
+const bf = require("brainfudge");
 const args = process.argv;
 args.shift(); args.shift(); // remove binary path and current directory
 const fs = require("fs");

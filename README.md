@@ -1,4 +1,4 @@
-# potato 
+# potato
 ### An interpreter for potato script
 #### made by retronbv
 
