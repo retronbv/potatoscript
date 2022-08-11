@@ -2,6 +2,11 @@
 ### An interpreter for potato script
 #### made by retronbv
 
+**Installing potatoscript cli**
+
+```sh
+$ npm i retronbv/potatoscript -g
+```
 
 **Running a PS file**
 ```
