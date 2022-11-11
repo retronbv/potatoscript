@@ -21,6 +21,17 @@ function convert(code) {
     .replaceAll("🥔", "[");
 }
 
+function reconvert(code) {
+  return code.replaceAll(",","🥔🥔🥔🥔🥔🥔🥔🥔 ")
+    .replaceAll(".","🥔🥔🥔🥔🥔🥔🥔 ")
+    .replaceAll("-","🥔🥔🥔🥔🥔🥔 ")
+    .replaceAll("+","🥔🥔🥔🥔🥔 ")
+    .replaceAll(">","🥔🥔🥔🥔 ")
+    .replaceAll("<","🥔🥔🥔 ")
+    .replaceAll("]","🥔🥔 ")
+    .replaceAll("[","🥔 ")
+}
+
 function run(code) {
   output = "";
   bf.exec(code, (e, o) => {
@@ -31,10 +42,58 @@ function run(code) {
 }
 
 if (args.length === 0) {
-  console.log("Please provide a file to run");
+  console.log("Please provide arguments");
   process.exit(0);
 }
 
-if (args[0] === ".") args[0] = "index.ps";
-rawcode = fs.readFileSync("./" + args[0], { encoding: 'utf8', flag: 'r' });
-console.log(run(convert(rawcode)));
+if (args[0] === "run") {
+  if (args.length === 2) {
+    // run potatoscript file
+    if (args[1] === ".") args[1] = "index.ps";
+    rawcode = fs.readFileSync("./" + args[1], { encoding: 'utf8', flag: 'r' });
+    console.log(run(convert(rawcode)));
+  } else {
+    console.log("Please provide a file to run")
+    process.exit(0)
+  }
+} else if (args[0] === "convert") {
+  // convert brainf*** to potatoscript
+  switch (args.length) {
+    case 1:
+      console.log("Please provide a file to convert and a filename to export to");
+      process.exit(0);
+      break;
+    case 2:
+      console.log("Please provide a filename to export to");
+      process.exit(0);
+      break;
+    case 3:
+      break;
+  }
+  let converted = reconvert(fs.readFileSync("./" + args[1], { encoding: 'utf8', flag: 'r' }));
+  fs.writeFile("./"+args[2],converted,(err,data)=>{
+    if (err) console.log(err)
+    console.log("Converted  "+args[1]+" to potatoscript");
+    process.exit(0)
+  });
+} else if (args[0] === "deconvert") {
+  // convert potatoscript to brainf***
+  switch (args.length) {
+    case 1:
+      console.log("Please provide a file to convert and a filename to export to");
+      process.exit(0);
+      break;
+    case 2:
+      console.log("Please provide a filename to export to");
+      process.exit(0);
+      break;
+    case 3:
+      break;
+  }
+  let converted = convert(fs.readFileSync("./" + args[1], { encoding: 'utf8', flag: 'r' }));
+  fs.writeFile("./"+args[2],converted,(err,data)=>{
+    if (err) console.log(err)
+    console.log("Converted  "+args[1]+" to brainf***");
+    process.exit(0)
+  });
+}

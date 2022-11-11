@@ -1,13 +1,13 @@
 {
   "name": "potato",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "npm link"
   },
   "keywords": [],
-  "author": "",
+  "author": "retronbv",
   "license": "ISC",
   "bin": "./index.js",
   "dependencies": {
